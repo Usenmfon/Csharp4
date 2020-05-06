@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Root | Finder";
+}
+<div class="text-center">
+    <h1 class="display-0">The SquareRoot Calculator</h1>
+</div>
+
+       @if(ViewBag.FNumberSqrt > ViewBag.SNumberSqrt)
+        {
+            <div>
+            <p>The number @ViewBag.NumberOne with square root 
+                @ViewBag.FNumberSqrt has a higher square root than
+                the number @ViewBag.NumberTwo with square root
+                @ViewBag.SNumberSqrt
+            </p>
+            </div>
+        }
+        else if(ViewBag.FNumberSqrt < ViewBag.SNumberSqrt)
+        {
+            <div>
+            <p>The number @ViewBag.NumberTwo with square root 
+                @ViewBag.SNumberSqrt has a higher square root than
+                the number @ViewBag.NumberOne with square root
+                @ViewBag.FNumberSqrt
+            </p>
+            </div>
+        }
+        else if(ViewBag.FNumberSqrt == ViewBag.SNumberSqrt)
+        {
+            <div>
+            <p>
+                The Square root of the given numbers are the same.
+                Please, enter another value
+            </p>
+            </div>
+        }
+        else if(ViewBag.NumberOne <= 0 || ViewBag.NumberTwo <=0)
+        {
+            <div>
+            <p>
+                ERROR!!!<br/>
+                You entered a negative number, TRY AGAIN
+            </p>
+            </div>
+        }
+<div>
+    <form asp-controller="calc" asp-action="Squareroot" method="POST">
+        <input type="number" placeholder="First Number" name="firstNumber"/>
+        <input type="number" placeholder="Second Number" name="secondNumber"/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
